@@ -8,3 +8,6 @@ Hittade detta, något att kolla på
 * The other dev fetches any new changes from the dev branch before pushing his new code
 * When dev branch is good,we merge with the master branch
 * Locally we have several feature branches issue branches etc.
+
+Även en länk med ett "workflow"
+https://guides.github.com/introduction/flow/
