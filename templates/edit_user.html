@@ -1,0 +1,101 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if message %}
+Add tag: {{message[1]}} to this user? <a href="/crosstag/v1.0/link_user_to_last_tag/{{message[0]}}">YES</a>
+{% endif %}
+
+{% if data %}
+<h1>Edit user</h1>
+<form action="" method="post" name="new_user" class="form-horizontal" role="form">
+    {{form.hidden_tag()}}
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                    {{form.name(size=80, value=data.name)}}
+                </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">E-mail</label>
+                <div class="col-sm-10">
+                    {{form.email(size=80, value=data.email)}}
+                </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Phone</label>
+                <div class="col-sm-10">
+                    {{form.phone(size=80, value=data.phone)}}
+                </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Tag</label>
+                <div class="col-sm-10">
+                    {{form.tag_id(size=80, value=data.tag_id)}}
+                </div>
+        </div>
+        <div class="radio">
+          {{form.gender(size=80, value=data.gender)}}
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">fortnox_id</label>
+                <div class="col-sm-10">
+                    {{form.fortnox_id(size=80,value=data.fortnox_id)}}
+                </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">birth date</label>
+                <div class="col-sm-10">
+                    {{form.birth_date(size=80, value=data.birth_date)}}
+                </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">expiry date</label>
+                <div class="col-sm-10">
+                    {{form.expiry_date(size=80, value=data.expiry_date)}}
+                </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">create date</label>
+                <div class="col-sm-10">
+                    {{form.create_date(size=80, value=data.create_date)}}
+                </div>
+        </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <input type="submit" value="Save" class="btn btn-default">
+        </div>
+    </div>
+</form>
+{% if tags %}
+<h2>Recent tagevents for this user's tag</h2>
+    <table class="table table-hover">
+    <tbody>
+        <thead>
+            <tr>
+                <th>index</th> <th>timestamp</th><th>tag_id</th>
+            </tr>
+        </thead>
+                {% for tag in tags %}
+                <tr>
+                    <td>{{tag.index}}</td> <td>{{tag.timestamp}}</td> <td>{{tag.tag_id}}</td>
+                </tr>
+                {% endfor %}
+    </tbody>
+    </table>
+{% endif %}
+
+<form action="/crosstag/v1.0/link_user_to_last_tag/{{data.index}}" method="post" name="Link tag">
+<p><input type="submit" value="Link user to last system tagevent"></p>
+</form>
+<br><br><br><br><br><br>
+<form action="/crosstag/v1.0/remove_user/{{data.index}}" method="post" name="remove_user">
+<p><input type="submit" value="Delete user (forever ever). No additional warnings given"></p>
+</form>
+
+{% else %}
+<h1>Edit user</h1>
+It looks like you haven't supplied a user id. How can you edit a user without supplying an ID? Maybe try to search for one?
+{% endif %}
+{% endblock %}

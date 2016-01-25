@@ -1,0 +1,95 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block scripts %}
+<script>console.log("bar!")</script>
+{{super()}}
+{% endblock %}
+
+{% block content %}
+<br>
+<h1>Statistics</h1>
+<h2>Tag events in the last 3 months</h2>
+<div id="plot">
+</div>
+
+<script>
+// Set up the plot window.
+
+var margin = 80;
+var width = 700 - 2 * margin, height = 500 - 2 * margin;
+
+
+// Parse the date / time
+var parseDate = d3.time.format("%Y-%m").parse;
+
+var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
+
+var y = d3.scale.linear().range([height, 0]);
+// Parse the date / time
+var parseDate = d3.time.format("%Y-%m-%d").parse;
+
+// Our color bands
+var color = d3.scale.ordinal()
+    .range(["#308fef", "#5fa9f3", "#1176db"]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+    .tickFormat(d3.time.format("%m-%d"));
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(10);
+
+
+var svg = d3.select("#plot").append("svg")
+                .attr("width", width + 2 * margin)
+                .attr("height", height + 2 * margin)
+                 .append("svg:g")
+                .attr("transform", "translate(" + margin + ", " + margin + ")");
+    
+
+
+// Load the data.
+var callback = function (data) {
+    
+    console.log(data);
+    
+    data.forEach(function(d) {
+        console.log(parseDate(d.datestamp));
+        d.date = parseDate(d.datestamp);
+        d.count = +d.count;
+    });
+
+    x.domain(data.map(function(d) { return d.date; }).sort(d3.ascending));
+    y.domain([0, d3.max(data, function(d) { return d.count; })]);
+
+    svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+    .selectAll("text")
+      .style("text-anchor", "end")
+      .attr("dx", "-.8em")
+      .attr("dy", "-.55em")
+      .attr("transform", "rotate(-90)" );
+
+    svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+
+    console.log(d3.max(data, function(d) { return d.count; }));
+    // Insert the data points.
+    svg.selectAll("bar").data(data).enter()
+      .append("rect")
+      .style("fill", "steelblue")
+      .attr("x", function(d) { return x(d.date); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.count); })
+      .attr("height", function(d) { return height - y(d.count)});
+};
+d3.json("/getrecentevents", callback);
+</script>
+{% endblock %}
