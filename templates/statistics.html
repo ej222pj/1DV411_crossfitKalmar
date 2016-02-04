@@ -2,22 +2,50 @@
 {% extends "base.html" %}
 
 {% block scripts %}
-<script>console.log("bar!")</script>
+
 {{super()}}
 {% endblock %}
 
 {% block content %}
 <br>
 <h1>Statistics</h1>
-<h2>Tag events in the last 3 months</h2>
-<div id="plot">
+
+<div>
+    <h2>Gender Statistics</h2>
+    <h4>Registered Members   |   Tagged this month</h4>
+    <canvas id="genderChart" width="200" height="200"></canvas>
+
+    <canvas id="genderChart1" width="200" height="200"></canvas>
 </div>
 
+<div>
+
+
+</div>
+
+<div>
+    <h2>Tags per Month {{ data[2][12] }} </h2>
+    <canvas id="tagChart" width="600" height="400"></canvas>
+</div>
+
+<!--JS script for the Charts, data is the information from the server-->
+<script>
+    var chart = new statistic.Main();
+    chart.genderStats({{ data }});
+    chart.genderTags({{ data }});
+    chart.tagsByMonths({{ data }});
+</script>
+
+
+{% endblock %}
+
+
+
+<!--
 <script>
 // Set up the plot window.
-
 var margin = 80;
-var width = 700 - 2 * margin, height = 500 - 2 * margin;
+var width = 900 - 2 * margin, height = 500 - 2 * margin;
 
 
 // Parse the date / time
@@ -92,4 +120,6 @@ var callback = function (data) {
 };
 d3.json("/getrecentevents", callback);
 </script>
-{% endblock %}
+
+
+-->
