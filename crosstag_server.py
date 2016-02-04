@@ -363,7 +363,6 @@ def get_tagevents_user_dict(user_index):
 @app.route('/statistics', methods=['GET'])
 def statistics():
 
-
     gs = generateStats()
 
     # Fetch the data from the database.

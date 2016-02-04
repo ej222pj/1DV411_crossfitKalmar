@@ -76,7 +76,7 @@ statistic.Main.prototype.tagsByMonths = function(stats) {
     labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     datasets: [
         {
-            label: "My First dataset",
+            label: "Tags this year",
             fillColor: "rgba(220,220,220,0.2)",
             strokeColor: "rgba(0, 114, 255, 0.9)",
             pointColor: "rgba(220,220,220,1)",
@@ -107,6 +107,42 @@ statistic.Main.prototype.tagsByMonths = function(stats) {
 
 
      var chart1 = document.getElementById("tagChart").getContext("2d");
+     new Chart(chart1).Bar(data, options);
+
+}
+
+statistic.Main.prototype.ageOfMembers = function(stats) {
+    //renders a bar chart with the tags per month.
+    var data = {
+    labels: ["15-25", "26-35", "36-45", "46-55", "56-65", "65+"],
+    datasets: [
+        {
+            label: "Age",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(0, 114, 255, 0.9)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data:
+                [stats[3][0],
+                stats[3][1],
+                stats[3][2],
+                stats[3][3],
+                stats[3][4],
+                stats[3][5]]
+
+        },
+      ]
+    };
+
+    var options = {
+	segmentShowStroke : false,
+	animateScale : true
+    }
+
+
+     var chart1 = document.getElementById("ageChart").getContext("2d");
      new Chart(chart1).Bar(data, options);
 
 }
