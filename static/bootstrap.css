@@ -13,6 +13,33 @@ html {
 body {
   margin: 0;
 }
+
+.admin{
+  font-family: Verdana;
+  font-style: italic;
+  font-size: 32px;
+  color: silver;
+  font-weight: bold;
+}
+
+.cflogo{
+  margin-left: 80%;
+  position: absolute;
+}
+
+.debt{
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.debtlink{
+  margin-left: 20px;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 article,
 aside,
 details,
@@ -915,12 +942,13 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #337ab7;
+  font-size: 14px;
+  color: mediumblue;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #23527c;
+  color: black;
   text-decoration: underline;
 }
 a:focus {
@@ -1153,7 +1181,7 @@ mark,
   color: #777;
 }
 .text-primary {
-  color: #337ab7;
+  color: #f300e0;
 }
 a.text-primary:hover {
   color: #286090;
@@ -4622,8 +4650,9 @@ a.badge:focus {
 .jumbotron {
   padding: 30px 15px;
   margin-bottom: 30px;
-  color: inherit;
-  background-color: #eee;
+  color: silver;
+  background-color: white;
+  font-family: Verdana;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -5080,7 +5109,7 @@ a.list-group-item-danger.active:focus {
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 24px;
   color: inherit;
 }
 .panel-title > a {
@@ -5339,12 +5368,12 @@ a.list-group-item-danger.active:focus {
   border-bottom-color: #d6e9c6;
 }
 .panel-info {
-  border-color: #bce8f1;
+  border-color: rgba(0, 0, 0, 0);
 }
 .panel-info > .panel-heading {
-  color: #31708f;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
+  border-color: rgba(0, 0, 0, 0);
 }
 .panel-info > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #bce8f1;

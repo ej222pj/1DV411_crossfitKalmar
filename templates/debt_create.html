@@ -1,0 +1,35 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if error %}
+
+{% if error["amount"] %}
+    <p style="color:red;">Not a valid number, must be full number.</p>
+{% endif %}
+{% if error["product"] %}
+    <p style="color:red;">Not a valid Name</p>
+{% endif %}
+{% endif %}
+
+<h1>Create new debt</h1>
+<form action="" method="post" name="new_debt" class="form-horizontal" role="form">
+    {{form.hidden_tag()}}
+        <div class="form-group">
+            <label for="inputAmount">Product</label>
+
+                    {{form.product(size=20, placeholder='')}}
+
+            <label for="inputAmount">Amount</label>
+
+                    {{form.amount(size=10, placeholder='')}} SEK
+        </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <input type="submit" value="Create" class="btn btn-default">
+        </div>
+    </div>
+</form>
+{% endblock %}

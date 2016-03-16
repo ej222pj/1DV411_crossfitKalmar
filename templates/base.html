@@ -7,6 +7,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../static/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../static/datepicker.css">
+    <link href="../../static/bootstrap.css" rel="stylesheet">
+    <link href="../../static/jumbotron-narrow.css" rel="stylesheet">
 
     {% if title %}
     <title>{{title}} - Crosstag</title>
@@ -15,27 +18,34 @@
     {% endif %}
     {% block scripts %}{% endblock%}
     <!-- Bootstrap core CSS -->
-    <link href="../../static/bootstrap.css" rel="stylesheet">
-    <link href="../../static/jumbotron-narrow.css" rel="stylesheet">
+
+
+    <script type="text/javascript" src="../../static/bootstrap.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.js"></script>
     <script type="text/javascript" src="../../static/ie-emulation-modes-warning.js"></script> 
     <script type="text/javascript" src="../../static/d3.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-   <script type="text/javascript" src="../../static/statisticData.js"></script>
+    <script type="text/javascript" src="../../static/statisticData.js"></script>
+
+
   </head>
 
+
   <body>
+  <img class="cflogo" src="/static/crosslogo.png" alt="Crosstag Logo" height="150" width="200">
     <div class="container">
       <div class="header">
         <nav>
           <ul class="nav nav-pills pull-right">
             <li role="presentation"><a href="/index">Home</a></li>
-            <li role="presentation"><a href="/add_new_user">Add new user</a></li>
             <li role="presentation"><a href="/search_user">Search user</a></li>
-            <li role="presentation"><a href="/all_users">All users</a></li>
-            <li role="presentation"><a href="/all_tagevents">All tagevents</a></li>
-            <li role="presentation"><a href="/last_tagins">Last tagins</a></li>
-            <li role="presentation"><a href="/statistics">Statistics</a></li>
-            <li role="presentation"><a href="/tagin_user">Tagin</a></li>
+            <li role="presentation"><a href="/all_users/active">All users</a></li>
+            <li role="presentation"><a href="/last_tagins">Last Tagins</a></li>
+              <li role="presentation"><a href="/statistics">Statistics</a></li>
+            <li role="presentation"><a href="/inactive_check">Latecomers</a></li>
+              <li role="presentation"><a href="/debt_check">Debts</a></li>
+            <li role="presentation"><a href="/crosstag/v1.0/fortnox/">Sync</a></li>
           </ul>
         </nav>
         <!--<h3 class="text-muted">Crosstag</h3> -->
@@ -51,7 +61,7 @@
       {% endwith %}
       {% block content %}{% endblock %}
       <footer class="footer">
-        <p>&copy; Crosstag 2013-2014</p>
+        <p>&copy; Crosstag 2013-2016</p>
       </footer>
 
     </div> <!-- /container -->

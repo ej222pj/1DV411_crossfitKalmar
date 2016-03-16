@@ -3,7 +3,7 @@ Crosstag: A sensible gym solution for sensible gyms
 I really wish I had written more here. Maybe by Christmas?
 
 Features
---------
+----------
 
 - Designed to run on a Raspberry Pi (http://www.raspberrypi.org/products/)
 - COTS RFID-reader compatible (https://www.sparkfun.com/products/retired/9875, https://www.sparkfun.com/products/13198)
@@ -58,4 +58,15 @@ Setup for remote access
 sudo apt-get update
 sudo apt-get install weavedconnectd
 sudo weavedinstaller
+```
+
+Setup for Crontab
+-----------------------
+```sh
+sudo apt-get install gnome-schedule
+crontab -e <== Opens crontab file
+Add 3 lines in the bottom for automatic email, automatic sync and clear tagcounter
+* 10 * * 1 wget -O - -q -t 1 http://localhost/crosstag/v1.0/send_latecomers_email/
+* 6 * * 1 wget -O - -q -t 1 http://localhost/crosstag/v1.0/fortnox/
+0 4 1 * * wget -O - -q -t 1 http://localhost/crosstag/v1.0/clear_tagcounter/
 ```

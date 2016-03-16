@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../static/favicon.ico">
+
+    {% if title %}
+    <title>{{title}} - Crosstag</title>
+    {% else %}
+    <title>Crosstag</title>
+    {% endif %}
+    {% block scripts %}{% endblock%}
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../static/bootstrap.css" rel="stylesheet">
+    <link href="../../static/jumbotron-narrow.css" rel="stylesheet">
+    <link href="../../static/static_page.css" rel="stylesheet">
+    <script type="text/javascript" src="../../static/ie-emulation-modes-warning.js"></script>
+    <script type="text/javascript" src="../../static/d3.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <script type="text/javascript" src="../../static/statisticData.js"></script>
+    <script type="text/javascript" src="../../static/static_page.js"></script>
+
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+          </ul>
+        </nav>
+        <!--<h3 class="text-muted">Crosstag</h3> -->
+      </div>
+
+        <div class="page-header">
+
+            <h1>Välkommen till Crossfit Kalmar <br><small>Den <span style="color:magenta;">rosa</span> boxen</small>
+            <img src="/static/crosslogo.png" alt="Crosstag Logo" height="150" width="200"></h1>
+        </div>
+
+    {# Added some css to the tagged in user #}
+    <div id="tagins" style="visibility: hidden">
+        <div class="container bootstrap snippet">
+            <div class="panel-body inf-content">
+                <div class="row">
+                <div class="col-md-6">
+                    <div class="table-responsive">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                  <h1 class="panel-title" id="user_name"></h1>
+                            </div>
+                        </div>
+                        <table class="table table-condensed table-responsive table-user-information">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        <span class="glyphicon glyphicon-asterisk text-primary"></span>
+                                        Membership:
+                                    </strong>
+                                </td>
+                                <td class="text-primary" id="status_member">
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        <span class="glyphicon glyphicon-envelope text-primary"></span>
+                                        Email
+                                    </strong>
+                                </td>
+                                <td class="text-primary" id="user_email">
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        <span class="glyphicon glyphicon-calendar text-primary"></span>
+                                        Member since:
+                                    </strong>
+                                </td>
+                                <td class="text-primary" id="create_date">
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        <span class="glyphicon glyphicon-calendar text-primary"></span>
+                                        Membership expires:
+                                    </strong>
+                                </td>
+                                <td class="text-primary" id="expire_date">
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        <span class="glyphicon glyphicon-calendar text-primary"></span>
+                                        Tags this month:
+                                    </strong>
+                                </td>
+                                <td class="text-primary" id="tagin_month">
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div id="top-five">
+        <h2>Topp 5 taggningar denna månad</h2>
+        <canvas id="top-five-chart" width="600" height="400"></canvas>
+    </div>
+
+      <footer class="footer">
+        <p>&copy; Crosstag 2013-2016</p>
+      </footer>
+
+    </div> <!-- /container -->
+    <script src="../../static/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

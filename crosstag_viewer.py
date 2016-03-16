@@ -5,7 +5,7 @@ from optparse import OptionParser
 import requests
 import json
 import time
-
+#Test commit
 
 class CrosstagViewer(object):
     server = None
@@ -72,7 +72,7 @@ class CrosstagViewer(object):
 
     def ascii_print(self, text, font='slant'):
         f = Figlet(font=font)
-        print(f.renderText(text), end=" ")
+        print(f.renderText(text))
 
     def get_user_data(self, tag_nbr):
         try:
